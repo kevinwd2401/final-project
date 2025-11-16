@@ -65,9 +65,14 @@ public class Player : MonoBehaviour, IDamagable
         }
     }
 
-    public void InflictDamage(int dmg) {
+    public void InflictDamage(int dmg, Transform bulletTrans) {
+        Vector2 myDir = new Vector2 (transform.forward.x, transform.forward.z);
+        Vector2 otherDir = new Vector2 (bulletTrans.forward.x, bulletTrans.forward.z);
+        if (Mathf.Abs(Vector2.Dot(myDir.normalized, otherDir.normalized)) > 0.85f ) {
+            dmg /= 2;
+        }
         Health -= dmg;
-        Debug.Log("ouch");
+        Debug.Log("HP Left: " + Health);
         if (Health <= 0) {
             Destruction();
         }

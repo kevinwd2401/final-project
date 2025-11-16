@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Turret : MonoBehaviour
 {
     [SerializeField] GameObject shellPrefab;
+    [SerializeField] ParticleSystem ps;
     [SerializeField] protected Transform targetTransform;
     [SerializeField] protected Transform turretBase, turret;
     [SerializeField] protected Transform[] firePoints;
@@ -71,7 +72,7 @@ public abstract class Turret : MonoBehaviour
     }
 
     protected bool EnemyFireTorpedo(float lifespan, float spread) {
-        if (reloadTimer > 0.01f || !CheckAngle(0.7f) || !CheckAim() || getDist() < 1f) return false;
+        if (reloadTimer > 0.01f || !CheckAngle(0.65f) || !CheckAim() || getDist() < 2f) return false;
         reloadTimer = 1000f;
 
         StartCoroutine(EnemyTorpSpreadCor(lifespan, spread));
@@ -122,6 +123,7 @@ public abstract class Turret : MonoBehaviour
             shell.gameObject.transform.position = firePoints[i].position;
             shell.SetValues(damage, bulletSpeed * bulletDir);
         }
+        ps.Play();
         return true;
     }
 

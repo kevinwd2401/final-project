@@ -7,7 +7,7 @@ public class Torpedo : MonoBehaviour
     private Rigidbody rb;
 
     private int damage;
-    private float lifespan;
+    private float lifespan, totalLife;
 
     // Start is called before the first frame update
     void Start()
@@ -17,15 +17,14 @@ public class Torpedo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         lifespan -= Time.deltaTime;
         if (lifespan < 0) Destruction();
     }
 
     void OnCollisionEnter(Collision c) {
-        if (c.gameObject.tag == "Water") return;
+        if (c.gameObject.tag == "Water" || totalLife - lifespan < 0.5f) return;
         if (c.gameObject.TryGetComponent<IDamagable>(out IDamagable d)) {
-            d.InflictDamage(damage);
+            d.InflictDamage(damage, this.transform);
         }
 
         Destruction();
@@ -40,5 +39,6 @@ public class Torpedo : MonoBehaviour
         rb.velocity = force * transform.forward;
         damage = dmg;
         this.lifespan = lifespan + Random.value;
+        totalLife = this.lifespan;
     }
 }

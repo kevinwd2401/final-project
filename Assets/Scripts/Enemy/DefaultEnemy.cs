@@ -19,14 +19,17 @@ public class DefaultEnemy : Enemy
         foreach (EnemyTurret t in TurretArray) {
             t.Ready = true;
         }
+        foreach (EnemyLauncher l in LauncherArray) {
+            l.Ready = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveTarget(18);
+        moveTarget(playerRB, 22);
         if (torpTargetTransform != null) {
-            moveTorpTarget(6);
+            moveTorpTarget(7);
         }
     }
 

@@ -31,7 +31,7 @@ public class EnemyTurret : Turret
         
     }
     
-    public bool FireGuns() {
+    private bool FireGuns() {
         return Fire(true, shotOffset);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public interface IDamagable
 {
     int Health { get; set;}
-    void InflictDamage(int dmg);
+    void InflictDamage(int dmg, Transform bulletTrans);
 
 }
 

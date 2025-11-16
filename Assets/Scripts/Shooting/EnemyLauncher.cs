@@ -2,17 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLauncher : MonoBehaviour
+public class EnemyLauncher : Turret
 {
-    // Start is called before the first frame update
+    float delayTimer;
+    public float spreadAngle;
+    public bool Ready;
+
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+        reloadTimer -= Time.deltaTime;
+
+        if (!freezeRotation) {
+            TurnTurret();
+
+            turret.localEulerAngles += cTurretTurn * Time.deltaTime * Vector3.up;
+        }
+
+        if (Ready) {
+            delayTimer -= Time.deltaTime;
+            if (delayTimer < 0) {
+                FireTorps();
+                delayTimer = 0.16f;
+            }
+        }
         
+    }
+    
+    private bool FireTorps() {
+        return EnemyFireTorpedo(30, spreadAngle);
     }
 }

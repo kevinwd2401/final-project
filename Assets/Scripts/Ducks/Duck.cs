@@ -49,7 +49,7 @@ public class Duck : GroupBehavior, IDamagable, IBoid
         }
     }
 
-    public void InflictDamage(int dmg) {
+    public void InflictDamage(int dmg, Transform bulletTrans) {
         Health -= dmg;
         if (Health <= 0) {
             Destruction();

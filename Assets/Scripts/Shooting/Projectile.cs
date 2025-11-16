@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] Transform model;
     private Rigidbody rb;
+    [SerializeField] private MeshRenderer mr;
+    private MaterialPropertyBlock mpb;
 
     private int damage;
     private float lifetime;
@@ -13,6 +15,7 @@ public class Projectile : MonoBehaviour
 
     void Awake() {
         rb = GetComponent<Rigidbody>();
+        mpb = new MaterialPropertyBlock();
     }
     // Update is called once per frame
     void Update()
@@ -31,7 +34,7 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision c) {
         if (c.gameObject.TryGetComponent<IDamagable>(out IDamagable d)) {
-            d.InflictDamage(damage);
+            d.InflictDamage(damage, model);
         }
 
         Destruction();
@@ -45,6 +48,17 @@ public class Projectile : MonoBehaviour
 
     public void SetValues(int dmg, Vector3 velocity) {
         damage = dmg;
+        Color c;
+        if (damage < 100) {
+            c = new Color(1f, 0.6f, 0.2f);;
+        } else if (damage < 160) {
+            c = new Color(1f, 0.3f, 0f);
+        } else {
+            c = new Color(1f, 0.05f, 0f);;
+        }
+
+        mpb.SetColor("_EmissionColor", c * 2);
+        mr.SetPropertyBlock(mpb);
         rb.velocity = velocity;
     }
 
