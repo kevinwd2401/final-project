@@ -36,4 +36,7 @@ public class EnemyLauncher : Turret
     private bool FireTorps() {
         return EnemyFireTorpedo(30, spreadAngle);
     }
+    public override void AddSelfToTurrets(Enemy e) {
+        e.LauncherArray.Add(this);
+    }
 }

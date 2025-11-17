@@ -34,4 +34,7 @@ public class EnemyTurret : Turret
     private bool FireGuns() {
         return Fire(true, shotOffset);
     }
+    public override void AddSelfToTurrets(Enemy e) {
+        e.TurretArray.Add(this);
+    }
 }

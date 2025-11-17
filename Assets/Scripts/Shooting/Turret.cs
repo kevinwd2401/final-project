@@ -136,8 +136,8 @@ public abstract class Turret : MonoBehaviour
             turret.position - targetTransform.position, getDist(), 1 << 7);
     }
 
-    public void AssignTargetTransform(Transform target) {
-        targetTransform = target;
+    public virtual void AddSelfToTurrets(Enemy e) {
+        
     }
 
 }

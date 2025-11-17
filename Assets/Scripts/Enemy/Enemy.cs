@@ -20,7 +20,6 @@ public abstract class Enemy : GroupBehavior, IDamagable
     [SerializeField] protected bool EngineDamage;
 
 
-    protected float shellSpeed;
     protected Vector3 aimOffset;
     protected float aimOffsetLinear;
     

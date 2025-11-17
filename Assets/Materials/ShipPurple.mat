@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShipGreen
+  m_Name: ShipPurple
   m_Shader: {fileID: -6465566751694194690, guid: e8de919acc776034c80e51dc9f314b26,
     type: 3}
   m_Parent: {fileID: 0}
@@ -55,6 +55,6 @@ Material:
     - _QueueOffset: 0
     - _RandomColor: 0.8
     m_Colors:
-    - _Color1: {r: 0.15294115, g: 0.9843137, b: 0.7051837, a: 0}
-    - _Color2: {r: 0.16365823, g: 0.6745283, b: 0, a: 0}
+    - _Color1: {r: 0.30849066, g: 0, b: 0.7216981, a: 0}
+    - _Color2: {r: 0.75998497, g: 0, b: 1, a: 0}
   m_BuildTextureStacks: []
