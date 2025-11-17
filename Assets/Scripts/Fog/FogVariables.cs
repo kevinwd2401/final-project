@@ -10,6 +10,7 @@ public class FogVariables : MonoBehaviour
     private Vector3 savedScale;
 
     public float renderTexWorldSize;
+    private float timer;
 
 
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class FogVariables : MonoBehaviour
         FullScreenMat.SetFloat("_TexWorldSize", renderTexWorldSize);
 
         StartCoroutine(UpdateOffset());
+        timer = 0;
     }
 
     private IEnumerator UpdateOffset() {
@@ -32,7 +34,22 @@ public class FogVariables : MonoBehaviour
             FullScreenMat.SetVector("_BoundsMax", FogBox.position + savedScale / 2);
             FullScreenMat.SetVector("_TexWorldCenter", transform.position);
             yield return null;
+            FullScreenMat.SetFloat("_FogMultiplier", SmoothNoise1D(timer));
         }
+    }
+
+    void Update() {
+        timer += Time.deltaTime * 0.1f;
+    }
+
+    float SmoothNoise1D(float t)
+    {
+        float n =
+            0.6f * Mathf.Sin(t * 0.07f) +
+            0.3f * Mathf.Sin(t * 0.19f + 1.3f) +
+            0.1f * Mathf.Sin(t * 0.41f + 6.2f);
+
+        return Mathf.Lerp(0.2f, 1.2f, (n + 1.2f) * 0.5f);
     }
 
     void OnDestroy() {

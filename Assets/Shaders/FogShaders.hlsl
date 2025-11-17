@@ -29,7 +29,7 @@ float sampleDensity(float3 Position)
 }
 
 float sampleDensityDissipation(float3 Position, float3 textWorldCenter, float texWorldSize, UnityTexture2D DissipationTex,
-    UnitySamplerState DissipationSampler, UnityTexture3D NoiseTex, UnitySamplerState NoiseSampler, float time)
+    UnitySamplerState DissipationSampler, UnityTexture3D NoiseTex, UnitySamplerState NoiseSampler, float time, float fogMultiplier)
 {
         
     float3 noiseUV = Position * NOISE_SCALE;
@@ -38,7 +38,7 @@ float sampleDensityDissipation(float3 Position, float3 textWorldCenter, float te
     float noiseValue = SAMPLE_TEXTURE3D(NoiseTex, NoiseSampler, noiseUV).r;
     
     float noiseFactor = lerp(1.0 - NOISE_STRENGTH, 1.0 + NOISE_STRENGTH, noiseValue);
-    float baseDensity = saturate(0.6 * noiseFactor);
+    float baseDensity = saturate(0.6 * fogMultiplier * noiseFactor);
 
     float2 localPos = (textWorldCenter.xz - Position.xz) / texWorldSize + 0.5;
     
@@ -83,6 +83,7 @@ void RayMarcher_float(
     UnityTexture3D NoiseTex,
     UnitySamplerState NoiseSampler,
     float time,
+    float fogMultiplier,
     out float4 outValue
 )
 {
@@ -116,7 +117,8 @@ void RayMarcher_float(
             DissipationSampler,
             NoiseTex,
             NoiseSampler,
-            time
+            time,
+            fogMultiplier
         );
 
         if (density > 0.0)

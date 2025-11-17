@@ -95,7 +95,7 @@ public abstract class Turret : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         
-        reloadTimer = ReloadTime;
+        reloadTimer = ReloadTime - 2 * Random.value;
         freezeRotation = false;
     }
 
