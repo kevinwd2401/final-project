@@ -21,6 +21,6 @@ public class PlayerTurret : Turret
     }
     
     public bool FireGuns() {
-        return Fire(false);
+        return Fire(true, 0.05f);
     }
 }

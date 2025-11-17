@@ -100,7 +100,7 @@ public abstract class Turret : MonoBehaviour
     }
 
     protected bool Fire(bool offset, float offsetAmount = 0.05f) {
-        if (reloadTimer > 0.01f || !CheckAngle(0.8f) || !CheckAim() || getDist() < 3f) return false;
+        if (reloadTimer > 0.01f || !CheckAngle(0.8f) || !CheckAim() || !lineOfSightCheck() || getDist() < 3f) return false;
         reloadTimer = ReloadTime;
 
         if (firePoints.Length > 1) offset = true;
@@ -129,6 +129,15 @@ public abstract class Turret : MonoBehaviour
 
     protected float getDist() {
         return Vector3.Distance(turret.position, targetTransform.position);
+    }
+
+    protected bool lineOfSightCheck() {
+        return !Physics.Raycast(targetTransform.position, 
+            turret.position - targetTransform.position, getDist(), 1 << 7);
+    }
+
+    public void AssignTargetTransform(Transform target) {
+        targetTransform = target;
     }
 
 }

@@ -4976,7 +4976,7 @@ MonoBehaviour:
   TurretSpeed: 100
   cTurretTurn: 0
   damage: 200
-  bulletSpeed: 25
+  bulletSpeed: 24
 --- !u!1 &542238025545863672
 GameObject:
   m_ObjectHideFlags: 0
@@ -20849,7 +20849,7 @@ MonoBehaviour:
   TurretSpeed: 100
   cTurretTurn: 0
   damage: 200
-  bulletSpeed: 25
+  bulletSpeed: 24
 --- !u!1 &8193649741951060369
 GameObject:
   m_ObjectHideFlags: 0

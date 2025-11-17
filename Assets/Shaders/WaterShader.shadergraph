@@ -164,6 +164,9 @@
         },
         {
             "m_Id": "4f43d241f7e3413fa37eaf8487816607"
+        },
+        {
+            "m_Id": "2656ebfe6ac847719cce5ce0b3cf6fc1"
         }
     ],
     "m_GroupDatas": [
@@ -300,6 +303,20 @@
                     "m_Id": "80355aa70635457ca17fb2514ffaf5e1"
                 },
                 "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "2656ebfe6ac847719cce5ce0b3cf6fc1"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "58060f77370b454e96c6d883fef978f9"
+                },
+                "m_SlotId": 3
             }
         },
         {
@@ -1445,6 +1462,42 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.SamplerStateNode",
+    "m_ObjectId": "2656ebfe6ac847719cce5ce0b3cf6fc1",
+    "m_Group": {
+        "m_Id": "6bdf4704fb7f480fa47b1a2a8f2d8b74"
+    },
+    "m_Name": "Sampler State",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -2007.4998779296875,
+            "y": 671.4999389648438,
+            "width": 145.0,
+            "height": 135.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "28d7fb4929f047b99ee40841884d9fcb"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_filter": 2,
+    "m_wrap": 1,
+    "m_aniso": 0
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "26e4bec2775c4348a80e95694df91cf8",
     "m_Id": 1,
@@ -1479,6 +1532,19 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.SamplerStateMaterialSlot",
+    "m_ObjectId": "28d7fb4929f047b99ee40841884d9fcb",
+    "m_Id": 0,
+    "m_DisplayName": "Out",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_BareResource": false
 }
 
 {
@@ -1962,9 +2028,9 @@
     },
     "m_Color": {
         "color": {
-            "r": 0.1764705628156662,
-            "g": 0.5916248559951782,
-            "b": 0.6352941393852234,
+            "r": 0.12571200728416444,
+            "g": 0.4990765154361725,
+            "b": 0.5330188274383545,
             "a": 1.0
         },
         "mode": 0
@@ -2794,7 +2860,7 @@
     "m_ObjectId": "6bdf4704fb7f480fa47b1a2a8f2d8b74",
     "m_Title": "Ripples",
     "m_Position": {
-        "x": -1975.5,
+        "x": -2032.5,
         "y": 446.0
     }
 }
@@ -4194,7 +4260,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": 3.0,
+        "e00": 2.5,
         "e01": 2.0,
         "e02": 2.0,
         "e03": 2.0,

@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class RippleEffect : MonoBehaviour
 {
-    public int TextureSize = 768;
+    public int TextureSize = 1024;
     public RenderTexture ObjectsRT;
     private RenderTexture CurrRT, PrevRT, TempRT;
     public Shader RippleShader, AddShader, ScrollShader;
@@ -21,9 +21,12 @@ public class RippleEffect : MonoBehaviour
     void Start()
     {
         //Creating render textures and materials
-        CurrRT = new RenderTexture(TextureSize, TextureSize, 0, RenderTextureFormat.RFloat);
-        PrevRT = new RenderTexture(TextureSize, TextureSize, 0, RenderTextureFormat.RFloat);
-        TempRT = new RenderTexture(TextureSize, TextureSize, 0, RenderTextureFormat.RFloat);
+        CurrRT = new RenderTexture(TextureSize, TextureSize, 0, RenderTextureFormat.RHalf);
+        CurrRT.filterMode = FilterMode.Bilinear;
+        PrevRT = new RenderTexture(TextureSize, TextureSize, 0, RenderTextureFormat.RHalf);
+        PrevRT.filterMode = FilterMode.Bilinear;
+        TempRT = new RenderTexture(TextureSize, TextureSize, 0, RenderTextureFormat.RHalf);
+        TempRT.filterMode = FilterMode.Bilinear;
         RippleMat = new Material(RippleShader);
         AddMat = new Material(AddShader);
         ScrollMat = new Material(ScrollShader);
