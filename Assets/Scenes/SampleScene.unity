@@ -421,7 +421,7 @@ Transform:
   m_GameObject: {fileID: 196347216}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27, y: 1, z: 1237}
+  m_LocalPosition: {x: -16, y: 1, z: 782}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -680,7 +680,7 @@ Transform:
   m_GameObject: {fileID: 288759300}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1134, y: 1, z: 993}
+  m_LocalPosition: {x: 716, y: 1, z: 648}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1113,7 +1113,7 @@ Transform:
   m_GameObject: {fileID: 529289462}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1098, y: 1, z: -827}
+  m_LocalPosition: {x: -774, y: 1, z: -726}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1894,7 +1894,7 @@ Transform:
   m_GameObject: {fileID: 993119075}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1233, y: 1, z: -550}
+  m_LocalPosition: {x: 753, y: 1, z: -714}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2158,7 +2158,7 @@ Transform:
   m_GameObject: {fileID: 1055632189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1224, y: 1, z: 627}
+  m_LocalPosition: {x: -764, y: 1, z: 566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3266,9 +3266,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae7184279f385f4880140fc5c6ed530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  possibleTargetPoints:
+  - {fileID: 196347217}
+  - {fileID: 1055632190}
+  - {fileID: 529289463}
+  - {fileID: 1652668202}
+  - {fileID: 993119076}
+  - {fileID: 288759301}
   WaveNumber: 0
-  shipPrefabs: []
-  blackShipPrefabs: []
+  shipPrefabs:
+  - {fileID: 3409808607717493487, guid: 857741e7fb7b67142be10d1a36939165, type: 3}
+  - {fileID: 4572843486352301686, guid: ce648765914b10944b49496968c1cc08, type: 3}
+  - {fileID: 2152192817579057409, guid: 2ff607b8199384846b2d5c353f27cfc8, type: 3}
+  - {fileID: 8627948164822524787, guid: 47bc53ef3a8de6e4bb689210d6d83620, type: 3}
+  - {fileID: 9086305060085341314, guid: 5311a60861cf30a44bb6430e5557bbaa, type: 3}
+  blackShipPrefabs:
+  - {fileID: 1934923467548226515, guid: acd3efeb11c7bab469aeddf49da86ba1, type: 3}
   playerTransform: {fileID: 3759918366281878651}
   FlagShipDestroyed: 0
   Flagship: {fileID: 0}
@@ -3414,7 +3427,7 @@ Transform:
   m_GameObject: {fileID: 1652668201}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57, y: 1, z: -1180}
+  m_LocalPosition: {x: 71, y: 1, z: -867}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4458,7 +4471,7 @@ PrefabInstance:
     - target: {fileID: 4572843486352301686, guid: ce648765914b10944b49496968c1cc08,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5395954812926029118, guid: ce648765914b10944b49496968c1cc08,
         type: 3}

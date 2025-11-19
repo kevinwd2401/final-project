@@ -10,8 +10,12 @@ public class DefaultEnemy : Enemy
 
     [Header("States")]
     [SerializeField] bool DuckFocus;
+    [SerializeField] bool PlayerFocus;
+    [SerializeField] bool TorpBoat;
+    [SerializeField] bool Solo;
 
     private float torpSpeed, shellSpeed;
+    private float avoidRange, engageRange;
 
     void Awake() {
         seed3 = Random.Range(0, 3);
@@ -23,7 +27,6 @@ public class DefaultEnemy : Enemy
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        Health = 10000;
         StartCoroutine(ChangeOffset(ShootingOffset));
 
         player = EnemyManager.Instance.playerTransform.gameObject;
@@ -45,16 +48,48 @@ public class DefaultEnemy : Enemy
         }
     }
 
+    protected IEnumerator StateUpdater() {
+        while (true) {
+            //update boid variables, state, Destination
+            
+            yield return new WaitForSeconds(2f + 2 * Random.value);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (isDead) return;
+
+        //moveTargetDuck(shellSpeed);
         moveTarget(playerRB, shellSpeed);
         if (torpTargetTransform != null) {
             moveTorpTarget(torpSpeed);
         }
     }
 
-    public virtual void InitializeEnemy() {
-         
+    public virtual void InitializeEnemy(bool solo, bool playerFocus, bool duckFocus) {
+        seekWeight = solo ? 0.1f : 0.8f;
+        cohesionWeight = 0.8f;
+        alignmentWeight = 2f;
+        separationWeight = 1.4f;
+
+        neighborRadius = 30f;
+        separationRadius = 7f;
+        avoidRange = 16f;
+
+        if (EnemyType == 0) { Health = 2400; engageRange = 120;}
+        else if (EnemyType == 1) { Health = 1600 + Random.Range(0, 601); engageRange = 80; TorpBoat = true;}
+        else if (EnemyType == 2) { Health = 2000 + Random.Range(0, 601); engageRange = 160;}
+        else if (EnemyType == 3) { Health = 2800 + Random.Range(0, 801); engageRange = 100;}
+        else if (EnemyType == 4) { Health = 4200 + Random.Range(0, 1801); engageRange = 120;}
+
+
+
+    }
+    protected override void Destruction2() {
+        if (EnemyType == 0) {
+            EnemyManager.Instance.FlagShipDestroyed = true;
+        }
     }
 }

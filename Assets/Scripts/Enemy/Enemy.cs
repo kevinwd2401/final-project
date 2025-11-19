@@ -17,21 +17,23 @@ public abstract class Enemy : GroupBehavior, IDamagable
 
     protected GameObject player;
     protected Rigidbody playerRB;
+    protected Duck duckTarget;
     protected Ship ship;
 
     [SerializeField] protected int FiresOnShip;
     [SerializeField] protected bool EngineDamage;
 
+    protected Vector3 Destination;
 
     protected Vector3 aimOffset;
     protected float aimOffsetLinear;
-    private bool isDead;
+    protected bool isDead;
 
     
     
-    protected float getDist(Rigidbody duck = null) {
+    protected float getDist(Duck duck = null) {
         if (duck != null) {
-            return Vector3.Distance(transform.position, duck.position);
+            return Vector3.Distance(transform.position, duck.transform.position);
         }
         return Vector3.Distance(transform.position, player.transform.position);
     }
@@ -67,6 +69,14 @@ public abstract class Enemy : GroupBehavior, IDamagable
         Vector3 targetDir = targetRB.velocity * travelTime;
         targetDir.y = 0;
         targetTransform.position = targetRB.position + targetDir + aimOffset;
+    }
+    protected void moveTargetDuck(float bulletSpeed) {
+        float d = getDist(duckTarget);
+        bulletSpeed *= 1.35f;
+        float travelTime = (d / bulletSpeed) * (1f + (4 * d) / (2f * bulletSpeed * bulletSpeed));
+        Vector3 targetDir = duckTarget.GetVelocity() * travelTime;
+        targetDir.y = 0;
+        targetTransform.position = duckTarget.transform.position + targetDir + aimOffset;
     }
     protected void moveTorpTarget(float torpSpeed) {
         float d = getDist();
@@ -132,9 +142,15 @@ public abstract class Enemy : GroupBehavior, IDamagable
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Collider>().enabled = false;
         StartCoroutine(SinkCor(6));
+        
+        Destruction2();
 
         Debug.Log("Enemy Sunk");
     }
+    protected virtual void Destruction2() {
+
+    }
+
     IEnumerator SinkCor(float duration) {
         yield return new WaitForSeconds(1 + Random.value);
         float originalY = transform.position.y;
@@ -146,6 +162,7 @@ public abstract class Enemy : GroupBehavior, IDamagable
             sinkTimer += Time.deltaTime;
             yield return null;
         }
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
+        
     }
 }

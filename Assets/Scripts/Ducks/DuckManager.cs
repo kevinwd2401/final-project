@@ -56,6 +56,10 @@ public class DuckManager : MonoBehaviour
 
     public void DuckDied(IBoid d) {
         Ducks.Remove(d);
+        if (Ducks.Count <= 0) 
+        {
+            EnemyManager.Instance.EndGame();
+        }
     }
 
     private Vector3 GetCenter() {

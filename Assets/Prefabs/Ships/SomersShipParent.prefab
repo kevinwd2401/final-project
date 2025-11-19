@@ -237,6 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b28eb4bb7a8e7428b74f0c86af84e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 0}
+  smokePrefab: {fileID: 0}
+  firePrefab: {fileID: 0}
   targetTransform: {fileID: 2842258653038432901}
   torpTargetTransform: {fileID: 1058503223039975663}
   TurretArray:
@@ -299,7 +302,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 0
 --- !u!114 &827029737130558965
 MonoBehaviour:

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2231436675105900150}
   - component: {fileID: 3909313843293904581}
   - component: {fileID: 1723386718221436110}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlasticCube
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionAware: 0
+  despawnable: 0

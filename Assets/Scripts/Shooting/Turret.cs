@@ -133,7 +133,7 @@ public abstract class Turret : MonoBehaviour
 
     protected bool lineOfSightCheck() {
         return !Physics.Raycast(targetTransform.position, 
-            turret.position - targetTransform.position, getDist(), 1 << 7);
+            turret.position - targetTransform.position, getDist(), 1 << 11);
     }
 
     public virtual void AddSelfToTurrets(Enemy e) {
