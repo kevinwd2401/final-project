@@ -111,7 +111,7 @@ public class DefaultEnemy : Enemy, IBoid
     }
 
     private Vector3 GetOwnDestination() {
-        if (DuckDetected && (DuckFocus || !PlayerDetected)) {
+        if ( DuckFocus || (DuckDetected && !PlayerDetected)) {
             Vector3 v = DuckManager.Instance.GetCenter() + 20 * Random.insideUnitSphere;
             v.y = transform.position.y;
             return v;

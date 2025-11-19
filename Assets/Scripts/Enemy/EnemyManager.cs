@@ -66,13 +66,31 @@ public class EnemyManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
+        bool switchPosition = false;
+
+
         for (int i = 0; i < Mathf.Min(WaveNumber + 2, 5 + Random.Range(0, 5)); i++) {
-            //could reset target point up to one time, each group might have priority, duck focus is rare, solo is random
+            //reset target point up to one time, duck focus is rare, solo is random
+
+            bool pFocus = false, dFocus = false;
+            float r = Random.value;
+            if (r > 0.9f) {
+                dFocus = true;
+            } else if (r > 0.6) {
+                pFocus = true;
+            }
+
+            if (!switchPosition && Random.value > 0.9f) {
+                switchPosition = true;
+                //reset
+                SelectTargetPoint();
+            }
+
             ClearTargetPoint();
             GameObject ship = Instantiate(shipPrefabs[Mathf.Min(Random.Range(1, WaveNumber + 1), shipPrefabs.Length - 1)]);
             ship.transform.GetChild(0).position = chosenTargetPoint;
             DefaultEnemy de = ship.transform.GetChild(0).gameObject.GetComponent<DefaultEnemy>();
-            de.InitializeEnemy(false, false, false);
+            de.InitializeEnemy(switchPosition || (Random.value < 0.08f), pFocus, dFocus);
             chosenTargetPoint.x += 10;
             Enemies.Add((IBoid) de);
 
@@ -104,6 +122,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     private void SpawnFlagship() {
+        //flagship either focuses ducks or player
         SelectTargetPoint();
         ClearTargetPoint();
 
@@ -111,7 +130,7 @@ public class EnemyManager : MonoBehaviour
         GameObject ship = Instantiate(shipPrefabs[0]);
         ship.transform.GetChild(0).position = chosenTargetPoint;
         Flagship = ship.transform.GetChild(0).gameObject.GetComponent<Enemy>();
-        ((DefaultEnemy)Flagship).InitializeEnemy(true, false, false);
+        ((DefaultEnemy)Flagship).InitializeEnemy(true, Random.value > 0.6f, false);
         chosenTargetPoint.x += 10;
         Enemies.Add((IBoid) Flagship);
     }
