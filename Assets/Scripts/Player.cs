@@ -10,7 +10,14 @@ public class Player : MonoBehaviour, IDamagable
     Ship ship;
     [SerializeField] PlayerTurret[] turrets;
     [SerializeField] PlayerLauncher[] launchers;
-    public int Health { get; set;} = 2000;
+    private int health = 2400;
+    public int Health
+    {
+        get => health;
+        set {
+            health = Mathf.Min(value, 2400);
+        }
+    }
 
     float fireDelay, torpedoFireDelay;
     private Plane targetPlane;
@@ -103,9 +110,9 @@ public class Player : MonoBehaviour, IDamagable
         if (Mathf.Abs(Vector2.Dot(myDir.normalized, otherDir.normalized)) > 0.85f ) {
             dmg /= 2;
         }
-        Health -= dmg;
+        health -= dmg;
         Debug.Log("HP Left: " + Health);
-        if (Health <= 0) {
+        if (health <= 0) {
             Destruction();
         }
     }

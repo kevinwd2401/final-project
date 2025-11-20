@@ -69,18 +69,18 @@ public class EnemyManager : MonoBehaviour
         bool switchPosition = false;
 
 
-        for (int i = 0; i < Mathf.Min(WaveNumber + 2, 5 + Random.Range(0, 5)); i++) {
+        for (int i = 0; i < Mathf.Min(WaveNumber + 2, 6 + Random.Range(0, 5)); i++) {
             //reset target point up to one time, duck focus is rare, solo is random
 
             bool pFocus = false, dFocus = false;
             float r = Random.value;
             if (r > 0.9f) {
                 dFocus = true;
-            } else if (r > 0.6) {
+            } else if (r > 0.2) {
                 pFocus = true;
             }
 
-            if (!switchPosition && Random.value > 0.92f) {
+            if (WaveNumber > 3 && !switchPosition && Random.value > 0.92f) {
                 switchPosition = true;
                 //reset
                 SelectTargetPoint();

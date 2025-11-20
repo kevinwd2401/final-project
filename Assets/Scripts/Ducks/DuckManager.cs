@@ -8,10 +8,7 @@ public class DuckManager : MonoBehaviour
     public static DuckManager Instance;
     public List<IBoid> Ducks = new List<IBoid>();
     public List<Transform> EnemyArray = new List<Transform>();
-    [SerializeField] Transform[] possibleTargetPoints;
     public Vector3 TargetPosition = new Vector3(0, 0, 0);
-
-    private float healTimer = 10;
 
     void Awake()
     {
@@ -19,32 +16,17 @@ public class DuckManager : MonoBehaviour
     }
 
     void Start() {
-        int randomIndex = (int) (Mathf.Clamp01(Random.value - 0.0001f) * possibleTargetPoints.Length);
-        TargetPosition = possibleTargetPoints[randomIndex].position;
+        TargetPosition = player.gameObject.transform.position;
         StartCoroutine(SetTargetAssignEnemy());
-    }
-
-    void Update()
-    {
-        healTimer -= Time.deltaTime;
-        if (healTimer < 0) {
-            healTimer = 10;
-            if (player.Health <= 1900)
-                player.Health += Ducks.Count * 20;
-        }
     }
 
     private IEnumerator SetTargetAssignEnemy() {
         yield return new WaitForSeconds(1);
         while (true) {
-            Vector3 center = GetCenter();
-            if (Vector3.Distance(TargetPosition, center) < 40) {
-                int randomIndex = (int) (Mathf.Clamp01(Random.value - 0.0001f) * possibleTargetPoints.Length);
-                TargetPosition = possibleTargetPoints[randomIndex].position;
-            }
+            TargetPosition = player.gameObject.transform.position;
 
             EnemyArray.Clear();
-            Collider[] hits = Physics.OverlapSphere(center, 80, (1 << 6) | (1 << 11));
+            Collider[] hits = Physics.OverlapSphere(GetCenter(), 80, (1 << 6) | (1 << 11));
 
             foreach (Collider hit in hits)
             {
@@ -56,10 +38,6 @@ public class DuckManager : MonoBehaviour
 
     public void DuckDied(IBoid d) {
         Ducks.Remove(d);
-        if (Ducks.Count <= 0) 
-        {
-            EnemyManager.Instance.EndGame();
-        }
     }
 
     public Vector3 GetCenter() {
@@ -71,7 +49,7 @@ public class DuckManager : MonoBehaviour
             count++;
         }
 
-        if (count == 0) return Vector3.zero;
+        if (count == 0) return player.transform.position;
         center /= count;
         return center;
     }

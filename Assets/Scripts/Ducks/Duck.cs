@@ -6,6 +6,7 @@ public class Duck : GroupBehavior, IDamagable, IBoid
 {
     [SerializeField] Transform duckModel;
     [SerializeField] GameObject smokePrefab;
+    [SerializeField] GameObject healPrefab;
     public int Health { get; set;} = 1000;
 
     private Vector3 velocity;
@@ -16,11 +17,11 @@ public class Duck : GroupBehavior, IDamagable, IBoid
     {
         moveSpeed = 2.1f;
 
-        seekWeight = 1.8f;
+        seekWeight = 1.0f;
         fleeWeight = 1.6f;
         cohesionWeight = 0.7f;
         alignmentWeight = 0.9f;
-        separationWeight = 1.0f;
+        separationWeight = 1.6f;
 
         enemyRadius = 16f;
         neighborRadius = 15f;
@@ -29,6 +30,7 @@ public class Duck : GroupBehavior, IDamagable, IBoid
         velocity = Random.insideUnitSphere;
         velocity.y = 0f;
         DuckManager.Instance.Ducks.Add((IBoid) this);
+        StartCoroutine(SpawnHealsCor());
     }
 
     // Update is called once per frame
@@ -61,6 +63,14 @@ public class Duck : GroupBehavior, IDamagable, IBoid
         }
         if (Health <= 0) {
             Destruction();
+        }
+    }
+
+    private IEnumerator SpawnHealsCor() {
+        while (!isDead) {
+            yield return new WaitForSeconds(25 + 10 * Random.value);
+            //spawn heal
+            GameObject heal = Instantiate(healPrefab, transform.position, Quaternion.Euler(0, 360 * Random.value, 0));
         }
     }
 

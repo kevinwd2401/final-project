@@ -5022,6 +5022,8 @@ MonoBehaviour:
   duckModel: {fileID: 5966110544587978785}
   smokePrefab: {fileID: 7915616489168928819, guid: f7d5e583d4c0e804c9c8852fe13133e8,
     type: 3}
+  healPrefab: {fileID: 7501026492553257632, guid: a0c3495435060694aab39c57f2ef483b,
+    type: 3}
 --- !u!54 &7403557522684289701
 Rigidbody:
   m_ObjectHideFlags: 0
