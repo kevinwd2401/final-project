@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 3183797740905901513}
   - component: {fileID: 3961110552452829693}
   - component: {fileID: 6269609670480052875}
+  - component: {fileID: 5075340508593113254}
   m_Layer: 6
   m_Name: Ship
   m_TagString: Untagged
@@ -290,6 +291,21 @@ MonoBehaviour:
   maxSpeed: 12
   maxForce: 11
   accelSpeed: 0
+--- !u!114 &5075340508593113254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3998628717652151381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd8db5fa90c4ea145a53a76f7fe40b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blipPrefab: {fileID: 7516242514181403392, guid: c41cf462a04abd446b3e72c685b97f6c,
+    type: 3}
+  offsetRadius: 0
 --- !u!1 &4400913851992773429
 GameObject:
   m_ObjectHideFlags: 0

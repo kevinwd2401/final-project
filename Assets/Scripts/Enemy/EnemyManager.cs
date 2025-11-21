@@ -50,7 +50,7 @@ public class EnemyManager : MonoBehaviour
         UIManager.Instance.UpdateKills(Kills);
         if (Enemies.Count <= 0) 
         {
-            StartCoroutine(SpawnWave(0.1f));
+            StartCoroutine(SpawnWave(8));
         }
     }
 
@@ -83,11 +83,11 @@ public class EnemyManager : MonoBehaviour
                 pFocus = true;
             }
 
-            if (WaveNumber > 3 && !switchPosition && Random.value > 0.9f) {
+            if (WaveNumber > 3 && i > 1 && !switchPosition && Random.value > 0.9f) {
                 switchPosition = true;
                 //reset
+                yield return new WaitForSeconds(Mathf.Min(i * 16, 45));
                 SelectTargetPoint();
-                yield return new WaitForSeconds(25f);
             }
 
             ClearTargetPoint();
@@ -102,6 +102,7 @@ public class EnemyManager : MonoBehaviour
         }
 
         if (spawnSpecial) {
+            yield return new WaitForSeconds(20 + 20 * Random.value);
             //SpawnSpecialShip()
         }
         currentlySpawning = false;
@@ -109,7 +110,7 @@ public class EnemyManager : MonoBehaviour
 
     private void SelectTargetPoint() {
         int r = Random.Range(0, possibleTargetPoints.Length);
-        chosenTargetPoint = playerTransform.position + 380 * (possibleTargetPoints[r].position - playerTransform.position).normalized;
+        chosenTargetPoint = playerTransform.position + 520 * (possibleTargetPoints[r].position - playerTransform.position).normalized;
         chosenTargetPoint.y = 1;
     }
     private void ClearTargetPoint() {

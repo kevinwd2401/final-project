@@ -223,9 +223,9 @@ public class DefaultEnemy : Enemy, IBoid
 
         if (EnemyType == 0) { Health = 2400; engageRange = 110;}
         else if (EnemyType == 1) { Health = 1600 + Random.Range(0, 601); engageRange = 80;}
-        else if (EnemyType == 2) { Health = 2000 + Random.Range(0, 601); engageRange = 140; TorpBoat = true;}
+        else if (EnemyType == 2) { Health = 1600 + Random.Range(0, 801); engageRange = 140; TorpBoat = true;}
         else if (EnemyType == 3) { Health = 2800 + Random.Range(0, 801); engageRange = 100;}
-        else if (EnemyType == 4) { Health = 4200 + Random.Range(0, 1801); engageRange = 120;}
+        else if (EnemyType == 4) { Health = 4200 + Random.Range(0, 1201); engageRange = 120;}
         FullHealth = Health;
 
         DuckFocus = duckFocus;

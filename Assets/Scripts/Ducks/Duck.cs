@@ -55,6 +55,7 @@ public class Duck : GroupBehavior, IDamagable, IBoid
     }
 
     public void InflictDamage(int dmg, Transform bulletTrans) {
+        if (dmg > 400) dmg = 400;
         Health -= dmg;
         if (Health < 300) {
             GameObject smoke = Instantiate(smokePrefab, bulletTrans.position, Quaternion.identity);
@@ -71,8 +72,8 @@ public class Duck : GroupBehavior, IDamagable, IBoid
             yield return new WaitForSeconds(25 + 10 * Random.value);
             //spawn heal
             if (Health <= 300) Health = 300;
-            else Health += 200;
-            
+            else Health = Mathf.Min(Health + 200, 1000);
+
             GameObject heal = Instantiate(healPrefab, transform.position, Quaternion.Euler(0, 360 * Random.value, 0));
         }
     }

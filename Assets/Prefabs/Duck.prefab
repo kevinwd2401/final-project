@@ -4962,6 +4962,7 @@ GameObject:
   - component: {fileID: 2693744920387293050}
   - component: {fileID: 6841480463349765977}
   - component: {fileID: 7403557522684289701}
+  - component: {fileID: 1086189306396501622}
   m_Layer: 8
   m_Name: Duck
   m_TagString: Untagged
@@ -5051,6 +5052,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &1086189306396501622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4966016536038810558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd8db5fa90c4ea145a53a76f7fe40b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blipPrefab: {fileID: 4329843236493526668, guid: 9fbc875f4adebd4469357abd9db4785b,
+    type: 3}
+  offsetRadius: 0
 --- !u!1 &6790017718573217270
 GameObject:
   m_ObjectHideFlags: 0

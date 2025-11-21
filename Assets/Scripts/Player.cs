@@ -22,6 +22,7 @@ public class Player : MonoBehaviour, IDamagable
 
     float fireDelay, torpedoFireDelay;
     private Plane targetPlane;
+    private bool isDead;
     
     private Vector3 camOffset;
     private float camOffsetMultiplier;
@@ -41,6 +42,8 @@ public class Player : MonoBehaviour, IDamagable
     // Update is called once per frame
     void Update()
     {
+        if (isDead) return;
+
         //movement
         if (Input.GetKey(KeyCode.A)) {
             ship.Turn(true);
@@ -58,13 +61,13 @@ public class Player : MonoBehaviour, IDamagable
         if (Input.GetKey(KeyCode.Q)) {
             Transform camtrans = mainCamera.transform;
             camtrans.localEulerAngles = new Vector3(
-            Mathf.Clamp(camtrans.localEulerAngles.x + 26 * Time.deltaTime, 53, 70), 
+            Mathf.Clamp(camtrans.localEulerAngles.x + 26 * Time.deltaTime, 56, 70), 
             camtrans.localEulerAngles.y, 
             camtrans.localEulerAngles.z);
         } else if (Input.GetKey(KeyCode.E)) {
             Transform camtrans = mainCamera.transform;
             camtrans.localEulerAngles = new Vector3(
-            Mathf.Clamp(camtrans.localEulerAngles.x - 26 * Time.deltaTime, 53, 70), 
+            Mathf.Clamp(camtrans.localEulerAngles.x - 26 * Time.deltaTime, 56, 70), 
             camtrans.localEulerAngles.y, 
             camtrans.localEulerAngles.z);
         }
@@ -120,6 +123,9 @@ public class Player : MonoBehaviour, IDamagable
     }
 
     private void Destruction() {
+        if (isDead) return;
+        isDead = true;
+
         ship.LoseEngines();
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         EnemyManager.Instance.EndGame();

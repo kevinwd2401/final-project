@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 5225415182786386088}
   - component: {fileID: 7340794366907025236}
   - component: {fileID: 827029737130558965}
+  - component: {fileID: 5148192433248522986}
   m_Layer: 6
   m_Name: Ship
   m_TagString: Untagged
@@ -255,7 +256,12 @@ MonoBehaviour:
   EnemyType: -1
   seed3: 0
   seed2: 0
+  PlayerDetected: 0
+  DuckDetected: 0
   DuckFocus: 0
+  PlayerFocus: 0
+  TorpBoat: 0
+  Solo: 0
 --- !u!65 &5225415182786386088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -330,6 +336,21 @@ MonoBehaviour:
   maxSpeed: 16
   maxForce: 16
   accelSpeed: 0
+--- !u!114 &5148192433248522986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2289847436375203292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd8db5fa90c4ea145a53a76f7fe40b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blipPrefab: {fileID: 7516242514181403392, guid: c41cf462a04abd446b3e72c685b97f6c,
+    type: 3}
+  offsetRadius: 0
 --- !u!1 &2447466939517568086
 GameObject:
   m_ObjectHideFlags: 0
