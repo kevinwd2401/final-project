@@ -30,12 +30,12 @@ public class EnemyManager : MonoBehaviour
         WaveNumber = 0;
         Kills = 0;
         waveTimer = 10;
-        currentSpecialIndex = 3;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        currentSpecialIndex = 4; // set random sequence
         StartCoroutine(SpawnWave(0.1f));
     }
 
@@ -84,7 +84,6 @@ public class EnemyManager : MonoBehaviour
 
 
         for (int i = 0; i < Mathf.Min(WaveNumber + 2, 5 + Random.Range(0, 5) - (spawnSpecial ? 3 : 0)); i++) {
-            //reset target point up to one time, duck focus is rare, solo is random
 
             bool pFocus = false, dFocus = false;
             float r = Random.value;
@@ -106,12 +105,12 @@ public class EnemyManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        if (true || spawnSpecial) {
-            yield return new WaitForSeconds(1);//40 + 10 * Random.value);
+        if (spawnSpecial) {
+            yield return new WaitForSeconds(40 + 20 * Random.value);
             SpawnSpecialShip();
             if (WaveNumber == 10 || WaveNumber == 16) {
                 SpawnSpecialShip();
-            } else if (Random.value < 0.33f) {
+            } else if (Random.value < 0.25f) {
                 SpawnRegularShip(1, true, true, false);
                 SpawnRegularShip(1, true, true, false);
             }
@@ -162,7 +161,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     private void SpawnSpecialShip() {
-        currentSpecialIndex++;
+        currentSpecialIndex++; // get next in random sequence
         if (currentSpecialIndex == blackShipPrefabs.Length) currentSpecialIndex = 0;
         SelectTargetPoint();
         ClearTargetPoint();

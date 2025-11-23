@@ -4860,6 +4860,7 @@ MonoBehaviour:
   - {fileID: 7135796869966243166, guid: 17ab6835004931f4c93a7e8fd5100f60, type: 3}
   - {fileID: 3775534372294063764, guid: ecc290ec2e461434eb0f11276be35ef8, type: 3}
   - {fileID: 8670510198042594081, guid: 043de1da9ef03564b9cf86e78e3aaa73, type: 3}
+  - {fileID: 8666475916078251010, guid: 01049481c741b8f4e9a231f042cfc8a0, type: 3}
   playerTransform: {fileID: 3759918366281878651}
   FlagShipDestroyed: 0
   Flagship: {fileID: 0}

@@ -45,6 +45,11 @@ public class SmokeEnemy : DefaultEnemy
             avoidRange = 60f;
             detectPlayerRange = 200;
             StartCoroutine(Checker5());
+        } else if (EnemyType == -6) {
+            Health = 4000; engageRange = 120;
+            avoidRange = 40;
+            detectPlayerRange = 180;
+            StartCoroutine(Checker6());
         }
 
         FullHealth = Health;
@@ -96,8 +101,13 @@ public class SmokeEnemy : DefaultEnemy
         while (true) {
             yield return new WaitForSeconds(2);
             if (Health < FullHealth - 400) {
-                StartCoroutine(ReloadBoostCor(15, 0.2f));
-                yield return new WaitForSeconds(26 + 4 * Random.value);
+                if (Random.value < 0.7f) {
+                    StartCoroutine(ReloadBoostCor(15, 0.2f));
+                    yield return new WaitForSeconds(26 + 4 * Random.value);
+                } else {
+                    StartCoroutine(SpeedBoostCor(18, 1.5f));
+                    yield return new WaitForSeconds(20);
+                }
             }
         }
     }
@@ -107,6 +117,16 @@ public class SmokeEnemy : DefaultEnemy
             yield return new WaitForSeconds(2);
             if (getDist() < 50 || Health < FullHealth / 2) {
                 StartCoroutine(ReloadBoostCor(12, 0.25f));
+                yield return new WaitForSeconds(20 + 4 * Random.value);
+            }
+        }
+    }
+
+    private IEnumerator Checker6() {
+        while (true) {
+            yield return new WaitForSeconds(4);
+            if (Health < FullHealth && Random.value < 0.25f) {
+                StartCoroutine((SpeedBoostCor(12, 1.75f)));
                 yield return new WaitForSeconds(20 + 4 * Random.value);
             }
         }
