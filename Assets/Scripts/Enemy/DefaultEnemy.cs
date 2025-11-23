@@ -17,7 +17,7 @@ public class DefaultEnemy : Enemy, IBoid
     [SerializeField] protected bool Solo;
 
     private float torpSpeed, shellSpeed;
-    protected float avoidRange, engageRange;
+    protected float avoidRange, engageRange, detectPlayerRange;
     private Vector3 storedDest;
     protected int FullHealth;
     private List<Transform> obstacles;
@@ -29,6 +29,7 @@ public class DefaultEnemy : Enemy, IBoid
         shellSpeed = 20;
         torpSpeed = 20;
         obstacles = new List<Transform>();
+        detectPlayerRange = 140;
     }
 
     // Start is called before the first frame update
@@ -59,7 +60,7 @@ public class DefaultEnemy : Enemy, IBoid
             if (isDead) yield break;
 
             //checks
-            PlayerDetected = getDist() < (140 + 20 * Random.value);
+            PlayerDetected = getDist() < (detectPlayerRange + 20 * Random.value);
             UpdateDuckDetected();
 
             // lock/unlock turrets

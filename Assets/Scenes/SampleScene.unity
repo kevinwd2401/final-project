@@ -4858,6 +4858,8 @@ MonoBehaviour:
   - {fileID: 1934923467548226515, guid: acd3efeb11c7bab469aeddf49da86ba1, type: 3}
   - {fileID: 8274605577250870792, guid: fe2afefb369c6924bbdfae27f0c950fe, type: 3}
   - {fileID: 7135796869966243166, guid: 17ab6835004931f4c93a7e8fd5100f60, type: 3}
+  - {fileID: 3775534372294063764, guid: ecc290ec2e461434eb0f11276be35ef8, type: 3}
+  - {fileID: 8670510198042594081, guid: 043de1da9ef03564b9cf86e78e3aaa73, type: 3}
   playerTransform: {fileID: 3759918366281878651}
   FlagShipDestroyed: 0
   Flagship: {fileID: 0}

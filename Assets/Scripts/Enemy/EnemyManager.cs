@@ -30,7 +30,7 @@ public class EnemyManager : MonoBehaviour
         WaveNumber = 0;
         Kills = 0;
         waveTimer = 10;
-        currentSpecialIndex = 1;
+        currentSpecialIndex = 3;
     }
 
     // Start is called before the first frame update
@@ -80,7 +80,7 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         bool switchPosition = false;
-        bool spawnSpecial = WaveNumber > 5 && Random.value > 0.7;
+        bool spawnSpecial = WaveNumber == 10 || WaveNumber == 16 || (WaveNumber > 5 && Random.value > 0.5f);
 
 
         for (int i = 0; i < Mathf.Min(WaveNumber + 2, 5 + Random.Range(0, 5) - (spawnSpecial ? 3 : 0)); i++) {
@@ -109,6 +109,12 @@ public class EnemyManager : MonoBehaviour
         if (true || spawnSpecial) {
             yield return new WaitForSeconds(1);//40 + 10 * Random.value);
             SpawnSpecialShip();
+            if (WaveNumber == 10 || WaveNumber == 16) {
+                SpawnSpecialShip();
+            } else if (Random.value < 0.33f) {
+                SpawnRegularShip(1, true, true, false);
+                SpawnRegularShip(1, true, true, false);
+            }
         }
         currentlySpawning = false;
     }

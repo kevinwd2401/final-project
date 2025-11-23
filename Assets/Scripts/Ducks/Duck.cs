@@ -71,8 +71,8 @@ public class Duck : GroupBehavior, IDamagable, IBoid
         while (!isDead) {
             yield return new WaitForSeconds(25 + 10 * Random.value);
             //spawn heal
-            if (Health <= 300) Health = 300;
-            else Health = Mathf.Min(Health + 200, 1000);
+            if (Health <= 300) Health = Mathf.Min(Health + 60, 300);
+            else Health = Mathf.Min(Health + 60, 1000);
 
             GameObject heal = Instantiate(healPrefab, transform.position, Quaternion.Euler(0, 360 * Random.value, 0));
         }

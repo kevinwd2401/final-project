@@ -72,7 +72,7 @@ public class FogVariables : MonoBehaviour
 
         while (thickenMultiplier > 0) {
             thickenMultiplier -= 0.1f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.02f);
         }
         thickenMultiplier = 0;
     }

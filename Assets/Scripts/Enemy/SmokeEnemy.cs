@@ -21,22 +21,29 @@ public class SmokeEnemy : DefaultEnemy
         avoidRange = 16f;
 
         if (EnemyType == -1) {
-            Health = 3600; engageRange = 140;
+            Health = 4000; engageRange = 140;
             avoidRange = 40f;
             TorpBoat = true;
+            detectPlayerRange = 200;
             StartCoroutine(Checker1());
         } else if (EnemyType == -2) {
             Health = 5000; engageRange = 70;
             avoidRange = 20f;
             StartCoroutine(Checker2());
         } else if (EnemyType == -3) {
-            Health = 5200; engageRange = 140;
+            Health = 7200; engageRange = 140;
             avoidRange = 40f;
             TorpBoat = true;
+            detectPlayerRange = 200;
             StartCoroutine(Checker3());
         } else if (EnemyType == -4) {
+            Health = 6000; engageRange = 100;
+            avoidRange = 20f;
             StartCoroutine(Checker4());
         } else if (EnemyType == -5) {
+            Health = 8000; engageRange = 160;
+            avoidRange = 60f;
+            detectPlayerRange = 200;
             StartCoroutine(Checker5());
         }
 
@@ -75,7 +82,7 @@ public class SmokeEnemy : DefaultEnemy
             if (Health < FullHealth - 400) {
                 if (smokeUsed || Random.value > 0.4) {
                     StartCoroutine(TorpReloadBoostCor(14, 0.3f));
-                    yield return new WaitForSeconds(26);
+                    yield return new WaitForSeconds(24 + 4 * Random.value);
                 } else {
                     StartCoroutine(SmokeCor(20));
                     smokeUsed = true;
@@ -88,14 +95,20 @@ public class SmokeEnemy : DefaultEnemy
     private IEnumerator Checker4() {
         while (true) {
             yield return new WaitForSeconds(2);
-            
+            if (Health < FullHealth - 400) {
+                StartCoroutine(ReloadBoostCor(15, 0.2f));
+                yield return new WaitForSeconds(26 + 4 * Random.value);
+            }
         }
     }
 
     private IEnumerator Checker5() {
         while (true) {
             yield return new WaitForSeconds(2);
-            
+            if (getDist() < 50 || Health < FullHealth / 2) {
+                StartCoroutine(ReloadBoostCor(12, 0.25f));
+                yield return new WaitForSeconds(20 + 4 * Random.value);
+            }
         }
     }
 
@@ -152,7 +165,7 @@ public class SmokeEnemy : DefaultEnemy
         Color c = m.GetColor("_EmissionColor");
 
         while (timer < duration) {
-            m.SetColor("_EmissionColor", c * (1 + 4 * Mathf.Sin(timer * 5)));
+            m.SetColor("_EmissionColor", c * (1 + 7 * Mathf.Sin(timer * 7)));
             timer += Time.deltaTime;
             yield return null;
         }

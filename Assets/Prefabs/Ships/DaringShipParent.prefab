@@ -10097,7 +10097,7 @@ MonoBehaviour:
   shipModel: {fileID: 8781229555577864838}
   currentRudder: 0
   currentForce: 0
-  turnSpeed: 12
+  turnSpeed: 20
   maxTurn: 30
   turnResistance: 0.4
   maxSpeed: 16
@@ -10748,7 +10748,7 @@ PrefabInstance:
     - target: {fileID: 5908369451600555358, guid: fc437278b0c284f41a7210f22c23567d,
         type: 3}
       propertyPath: bulletSpeed
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5908369451600555358, guid: fc437278b0c284f41a7210f22c23567d,
         type: 3}
@@ -10854,7 +10854,7 @@ PrefabInstance:
     - target: {fileID: 5908369451600555358, guid: fc437278b0c284f41a7210f22c23567d,
         type: 3}
       propertyPath: bulletSpeed
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5908369451600555358, guid: fc437278b0c284f41a7210f22c23567d,
         type: 3}
