@@ -6033,7 +6033,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Survive 16 waves of enemies!
+  m_text: 'Survive 12 waves of enemies!
 
 
     The ducks will provide repairs!'

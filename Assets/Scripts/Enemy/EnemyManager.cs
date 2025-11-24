@@ -65,7 +65,7 @@ public class EnemyManager : MonoBehaviour
         currentlySpawning = true;
         waveTimer = 300;
 
-        if (WaveNumber == 16) {
+        if (WaveNumber == 12) {
             yield return new WaitForSeconds(1);
             waveTimer = 10000;
             EndGame(false);
@@ -82,7 +82,7 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         bool switchPosition = false;
-        bool spawnSpecial = WaveNumber == 10 || WaveNumber == 16 || (WaveNumber > 5 && Random.value > 0.5f);
+        bool spawnSpecial = WaveNumber == 10 || WaveNumber == 12 || (WaveNumber > 5 && Random.value > 0.25f);
 
 
         for (int i = 0; i < Mathf.Min(WaveNumber + 2, 5 + Random.Range(0, 5) - (spawnSpecial ? 2 : 0)); i++) {
@@ -110,7 +110,7 @@ public class EnemyManager : MonoBehaviour
         if (spawnSpecial) {
             yield return new WaitForSeconds(36 + 10 * Random.value);
             SpawnSpecialShip();
-            if (WaveNumber == 10 || WaveNumber == 16) {
+            if (WaveNumber == 10 || WaveNumber == 12) {
                 SpawnSpecialShip();
             } else if (Random.value < 0.4f) {
                 SpawnRegularShip(1, true, true, false);
