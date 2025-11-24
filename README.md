@@ -1,5 +1,6 @@
 # Final Project!
 
+![ShipGameGif](https://github.com/user-attachments/assets/cb8ed2c0-471c-4ea6-bb82-ae26115a51bd)
 
 ## Project Planning: Design Doc
 
@@ -39,5 +40,7 @@ https://docs.google.com/document/d/1HD5-_L-pCF_eC4lvgOmJ6otgNM5OX93LYyv_ONMpe5w/
 
 - Progress:
   - Camera Rework
+  - Simple VFX
   - UI added
   - Increased enemy variety
+  - Audio
