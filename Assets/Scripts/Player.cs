@@ -79,13 +79,13 @@ public class Player : MonoBehaviour, IDamagable
         if (!usingSecondaryCam && Input.GetKey(KeyCode.Q)) {
             Transform camtrans = mainCamera.transform;
             camtrans.localEulerAngles = new Vector3(
-            Mathf.Clamp(camtrans.localEulerAngles.x + 26 * Time.deltaTime, 56, 70), 
+            Mathf.Clamp(camtrans.localEulerAngles.x + 30 * Time.deltaTime, 56, 70), 
             camtrans.localEulerAngles.y, 
             camtrans.localEulerAngles.z);
         } else if (!usingSecondaryCam && Input.GetKey(KeyCode.E)) {
             Transform camtrans = mainCamera.transform;
             camtrans.localEulerAngles = new Vector3(
-            Mathf.Clamp(camtrans.localEulerAngles.x - 26 * Time.deltaTime, 56, 70), 
+            Mathf.Clamp(camtrans.localEulerAngles.x - 30 * Time.deltaTime, 56, 70), 
             camtrans.localEulerAngles.y, 
             camtrans.localEulerAngles.z);
         }
@@ -96,12 +96,12 @@ public class Player : MonoBehaviour, IDamagable
             if (!usingSecondaryCam) {
                 float step = 0.05f;
                 camOffsetMultiplier -= Mathf.Sign(scrollValue) * step;
-                camOffsetMultiplier = Mathf.Clamp(camOffsetMultiplier, 0.7f, 1.2f);
+                camOffsetMultiplier = Mathf.Clamp(camOffsetMultiplier, 0.7f, 1.3f);
                 mainCamera.transform.localPosition = camOffset * camOffsetMultiplier;
             } else {
                 float step = 0.05f;
                 secondaryCamOffsetMultiplier -= Mathf.Sign(scrollValue) * step;
-                secondaryCamOffsetMultiplier = Mathf.Clamp(secondaryCamOffsetMultiplier, 0.6f, 1f);
+                secondaryCamOffsetMultiplier = Mathf.Clamp(secondaryCamOffsetMultiplier, 0.3f, 1f);
                 secondaryCam.transform.localPosition = secondaryCamOffset * secondaryCamOffsetMultiplier;
             }
         }
@@ -155,8 +155,6 @@ public class Player : MonoBehaviour, IDamagable
         ship.LoseEngines();
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         EnemyManager.Instance.EndGame(true);
-
-        Debug.Log("dead");
     }
 }
 

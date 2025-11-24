@@ -5365,6 +5365,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 5542800782235073250, guid: 2c2618203afa9324abb754ea64043546,
     type: 3}
   mainCamera: {fileID: 6118511886812637607}
+  secondaryCam: {fileID: 0}
   targetTransform: {fileID: 2101470679107708180}
   turrets:
   - {fileID: 2731021848903898451}
@@ -5503,8 +5504,8 @@ Transform:
   m_GameObject: {fileID: 2932800487499610727}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 4.44, y: -2.9, z: 1.87}
-  m_LocalScale: {x: 1.7, y: 4, z: 2}
+  m_LocalPosition: {x: 2.6, y: -2.9, z: 1.87}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5114306426808013347}
@@ -5516,7 +5517,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2932800487499610727}
-  m_Mesh: {fileID: 1942372148923593637, guid: afeccac7f3ecbcd42a12f226f15c35c4, type: 3}
+  m_Mesh: {fileID: 1942372148923593637, guid: 7c2b4fcb73b1ec14dbe7cc5ccdb7b171, type: 3}
 --- !u!23 &8722308599028618274
 MeshRenderer:
   m_ObjectHideFlags: 0
