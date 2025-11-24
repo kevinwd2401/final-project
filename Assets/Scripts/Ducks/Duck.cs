@@ -92,7 +92,6 @@ public class Duck : GroupBehavior, IDamagable, IBoid
         DuckManager.Instance.DuckDied((IBoid) this);
         GetComponent<Collider>().enabled = false;
         StartCoroutine(SinkCor(7));
-        Debug.Log("dead duck");
     }
 
     IEnumerator SinkCor(float duration) {

@@ -6036,7 +6036,7 @@ MonoBehaviour:
   m_text: 'Survive 16 waves of enemies!
 
 
-    The ducks will provide support!'
+    The ducks will provide repairs!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2edcffbef7b2a914fa61e3ff33296608, type: 2}
   m_sharedMaterial: {fileID: 5468582025064169878, guid: 2edcffbef7b2a914fa61e3ff33296608,

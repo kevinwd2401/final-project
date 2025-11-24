@@ -108,7 +108,7 @@ public class EnemyManager : MonoBehaviour
         }
 
         if (spawnSpecial) {
-            yield return new WaitForSeconds(40 + 10 * Random.value);
+            yield return new WaitForSeconds(36 + 10 * Random.value);
             SpawnSpecialShip();
             if (WaveNumber == 10 || WaveNumber == 16) {
                 SpawnSpecialShip();

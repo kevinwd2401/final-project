@@ -147,8 +147,6 @@ public abstract class Enemy : GroupBehavior, IDamagable
         StartCoroutine(SinkCor(9));
         
         Destruction2();
-
-        Debug.Log("Enemy Sunk");
     }
     protected virtual void Destruction2() {
 
