@@ -56,7 +56,7 @@ public abstract class Enemy : GroupBehavior, IDamagable
                 o /= 3;
             aimOffset = new Vector3(o.x, 0, o.y);
 
-            aimOffsetLinear = 0.75f * Random.value + 0.4f;
+            aimOffsetLinear = 0.7f + Random.value * 0.5f;
             yield return new WaitForSeconds(3 + Random.value);
         }
     }

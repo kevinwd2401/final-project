@@ -221,10 +221,10 @@ MonoBehaviour:
   currentRudder: 0
   currentForce: 0
   turnSpeed: 14
-  maxTurn: 18
+  maxTurn: 22
   turnResistance: 0.9
   maxSpeed: 10
-  maxForce: 17
+  maxForce: 20
   accelSpeed: 0
 --- !u!114 &2089362695275594873
 MonoBehaviour:
@@ -241,6 +241,8 @@ MonoBehaviour:
   blipPrefab: {fileID: 7516242514181403392, guid: c41cf462a04abd446b3e72c685b97f6c,
     type: 3}
   offsetRadius: 0
+  probability: 1
+  totalBlips: 1
 --- !u!1 &1049030950436087027
 GameObject:
   m_ObjectHideFlags: 0

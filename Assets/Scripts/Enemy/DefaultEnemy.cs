@@ -81,6 +81,10 @@ public class DefaultEnemy : Enemy, IBoid
                 Solo = true;
                 cohesionWeight = 0.2f;
                 alignmentWeight = 0f;
+                if (!TorpBoat) {
+                    engageRange *= 0.6f;
+                    avoidRange *= 0.7f;
+                }
             }
 
             if (Solo) {
@@ -112,7 +116,11 @@ public class DefaultEnemy : Enemy, IBoid
     }
 
     private Vector3 GetOwnDestination() {
-        if ( DuckFocus || (DuckDetected && !PlayerDetected)) {
+        if (EnemyType == 0 && seed2 == 1) {
+            Vector3 v = playerRB.position + 20 * Random.insideUnitSphere;
+            v.y = transform.position.y;
+            return v;
+        } else if ( DuckFocus || (DuckDetected && !PlayerDetected)) {
             Vector3 v = DuckManager.Instance.GetCenter() + 20 * Random.insideUnitSphere;
             v.y = transform.position.y;
             return v;
@@ -215,11 +223,11 @@ public class DefaultEnemy : Enemy, IBoid
         seekWeight = 0.8f;
         cohesionWeight = 0.5f;
         alignmentWeight = 2f;
-        separationWeight = 1.8f;
+        separationWeight = 2f;
         fleeWeight = 0.7f;
 
         neighborRadius = 50f;
-        separationRadius = 15f;
+        separationRadius = 20f;
         avoidRange = 16f;
 
         if (EnemyType == 0) { Health = 2400; engageRange = 110;}

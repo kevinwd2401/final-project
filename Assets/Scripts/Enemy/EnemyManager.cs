@@ -85,7 +85,7 @@ public class EnemyManager : MonoBehaviour
         bool spawnSpecial = WaveNumber == 10 || WaveNumber == 12 || (WaveNumber > 5 && Random.value > 0.25f);
 
 
-        for (int i = 0; i < Mathf.Min(WaveNumber + 2, 5 + Random.Range(0, 5) - (spawnSpecial ? 2 : 0)); i++) {
+        for (int i = 0; i < Mathf.Min(WaveNumber + 2, 5 + Random.Range(0, 5)); i++) {
 
             bool pFocus = false, dFocus = false;
             float r = Random.value;
@@ -98,13 +98,13 @@ public class EnemyManager : MonoBehaviour
             if (WaveNumber > 3 && i > 1 && !switchPosition && Random.value > 0.9f) {
                 switchPosition = true;
                 //reset
-                yield return new WaitForSeconds(Mathf.Min(i * 16, 45));
+                yield return new WaitForSeconds(Mathf.Min(i * 16, 35f));
                 SelectTargetPoint();
             }
 
             SpawnRegularShip(Mathf.Min(Random.Range(1, WaveNumber + 1), shipPrefabs.Length - 1), switchPosition, pFocus, dFocus);
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
         }
 
         if (spawnSpecial) {
@@ -158,7 +158,7 @@ public class EnemyManager : MonoBehaviour
         ship.transform.GetChild(0).position = chosenTargetPoint;
         DefaultEnemy de = ship.transform.GetChild(0).gameObject.GetComponent<DefaultEnemy>();
         de.InitializeEnemy(switchedPosition || (Random.value < 0.08f), pFocus, dFocus);
-        chosenTargetPoint.x += 10;
+        chosenTargetPoint.x += 16;
         Enemies.Add((IBoid) de);
     }
 

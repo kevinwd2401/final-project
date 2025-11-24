@@ -27,7 +27,7 @@ public class Torpedo : MonoBehaviour
         if (magnetic && !stopHoming) {
 
             Vector3 toTarget = EnemyManager.Instance.playerTransform.position - transform.position;
-            if (toTarget.magnitude < 24f) {
+            if (toTarget.magnitude < 22f) {
                 stopHoming = true;
                 return;
             }
@@ -97,6 +97,6 @@ public class Torpedo : MonoBehaviour
 
     private Vector3 CalculateTarget(Vector3 toTarget) {
         float timeToTarget = toTarget.magnitude / 10;
-        return playerRB.position + timeToTarget * playerRB.velocity;
+        return playerRB.position + (timeToTarget / 1.5f) * playerRB.velocity;
     }
 }
