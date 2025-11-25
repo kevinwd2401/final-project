@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Radar : MonoBehaviour
 {
-    public float sweepSpeed = 16f;
+    public float sweepSpeed = 10f;
     public float dotThreshold = 0.97f;
     private Vector3 sweepDir;
     private HashSet<IBoid> hitThisHalf = new HashSet<IBoid>();

@@ -41,10 +41,12 @@ public class Projectile : MonoBehaviour
             ParticleSystem splash = BulletPool.splashPool.Get();
             splash.transform.position = transform.position;
             splash.Play();
+            splash.transform.gameObject.GetComponent<AudioSource>().Play();
         } else {
             ParticleSystem spark = BulletPool.sparkPool.Get();
             spark.transform.position = transform.position;
             spark.Play();
+            spark.transform.gameObject.GetComponent<AudioSource>().Play();
         }
 
         Destruction();

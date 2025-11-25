@@ -10,6 +10,7 @@ public class EnemyLauncher : Turret
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

@@ -11,6 +11,11 @@ public class Duck : GroupBehavior, IDamagable, IBoid
 
     private Vector3 velocity;
     private bool isDead;
+    private AudioSource audioSource;
+
+    void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +79,7 @@ public class Duck : GroupBehavior, IDamagable, IBoid
             if (Health <= 300) Health = Mathf.Min(Health + 60, 300);
             else Health = Mathf.Min(Health + 60, 1000);
 
+            audioSource.Play();
             GameObject heal = Instantiate(healPrefab, transform.position, Quaternion.Euler(0, 360 * Random.value, 0));
         }
     }

@@ -7,6 +7,7 @@ public class PlayerLauncher : Turret
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         torpedosLoaded = firePoints.Length;
         reloadTimer = ReloadTime;
     }

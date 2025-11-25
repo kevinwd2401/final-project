@@ -24,6 +24,7 @@ public abstract class Turret : MonoBehaviour
 
     protected bool freezeRotation;
     protected int torpedosLoaded;
+    protected AudioSource audioSource;
     
 
     protected bool CheckAngle(float angle) {
@@ -67,12 +68,13 @@ public abstract class Turret : MonoBehaviour
         GameObject torpedo = Instantiate(shellPrefab, firePoints[torpedosLoaded].position, Quaternion.identity);
         torpedo.transform.forward = dir.normalized;
         torpedo.GetComponent<Torpedo>().SetValues(damage, bulletSpeed, lifespan);
+        audioSource.Play();
 
         return true;
     }
 
     protected bool EnemyFireTorpedo(float lifespan, float spread) {
-        if (reloadTimer > 0.01f || !CheckAngle(0.65f) || !CheckAim() || getDist() < 2f) return false;
+        if (reloadTimer > 0.01f || !CheckAngle(0.65f) || !CheckAim() || !HasClearShot(targetTransform) || getDist() < 2f) return false;
         reloadTimer = 1000f;
 
         StartCoroutine(EnemyTorpSpreadCor(lifespan, spread));
@@ -91,6 +93,7 @@ public abstract class Turret : MonoBehaviour
             GameObject torpedo = Instantiate(shellPrefab, firePoints[i].position, Quaternion.identity);
             torpedo.transform.forward = offsetDir.normalized;
             torpedo.GetComponent<Torpedo>().SetValues(damage, bulletSpeed, lifespan);
+            audioSource.Play();
 
             yield return new WaitForSeconds(0.2f);
         }
@@ -101,7 +104,7 @@ public abstract class Turret : MonoBehaviour
 
     protected bool Fire(bool offset, float offsetAmount = 0.05f) {
         if (reloadTimer > 0.01f || !CheckAngle(0.8f) || !CheckAim() || !lineOfSightCheck() || getDist() < 3f) return false;
-        reloadTimer = ReloadTime;
+        reloadTimer = 2;
 
         if (firePoints.Length > 1) offset = true;
 
@@ -123,6 +126,9 @@ public abstract class Turret : MonoBehaviour
             shell.gameObject.transform.position = firePoints[i].position;
             shell.SetValues(damage, bulletSpeed * bulletDir);
         }
+
+        reloadTimer = ReloadTime;
+        audioSource.Play();
         ps.Play();
         return true;
     }
@@ -135,6 +141,24 @@ public abstract class Turret : MonoBehaviour
         return !Physics.Raycast(targetTransform.position, 
             turret.position - targetTransform.position, getDist(), 1 << 11);
     }
+
+    public bool HasClearShot(Transform target) {
+
+        Vector3 dir = (target.position - transform.position).normalized;
+        dir.y = 0;
+        Vector3 origin = transform.position + dir * 3f;
+        origin.y = -0.15f;
+        float dist = Vector3.Distance(origin, target.position);
+
+        if (Physics.Raycast(origin, dir, out RaycastHit hit, dist, 1 << 6))
+        {
+            if (hit.collider.CompareTag("Enemy"))
+                return false;
+        }
+
+        return true;
+    }
+
 
     public virtual void AddSelfToTurrets(Enemy e) {
 

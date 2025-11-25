@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 7367941646662743462}
   m_Layer: 6
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,6 +408,8 @@ MonoBehaviour:
   blipPrefab: {fileID: 7516242514181403392, guid: c41cf462a04abd446b3e72c685b97f6c,
     type: 3}
   offsetRadius: 0
+  probability: 1
+  totalBlips: 1
 --- !u!1 &2152192817579057409
 GameObject:
   m_ObjectHideFlags: 0
