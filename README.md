@@ -16,6 +16,13 @@ Final Presentation / Writeup: https://docs.google.com/presentation/d/1UKBCCSkjmP
 
 Demo Video: https://youtu.be/7vNvFi7JsXs
 
+Controls:
+- WASD: control the ship's engine power and turning
+- Left Click: Fire guns
+- Right Click: Launch torpedoes (firing angles limited to the sides of the ship)
+- Q, E, Scroll Wheel: Controls camera angle and camera zoom, respectively
+- Tab: toggle between the camera's 2 different modes
+
 Thanks for checking this out!
 
 ## Project Planning: Design Doc
@@ -26,7 +33,11 @@ https://docs.google.com/document/d/1HD5-_L-pCF_eC4lvgOmJ6otgNM5OX93LYyv_ONMpe5w/
 ## Milestone #1
 
 - Current Progress:
-  - Procedural water with ripples using render textures and shaders 
+  - Procedural water with ripples using render textures and shaders:
+    - Top-down orthographic camera renders water-interacting objects to a collision render texture for creation of new waves
+    - Additive blend shader takes the current frame's wave RT and blends it with this collision RT
+    - Wave frag shader reads current frame and previous frame wave RT, computing next frame's wave RT with propogation and damping
+  - Render texture scrolling to support the orthographic camera and water texture's movement with the player
   - Designed and implemented player controller and shooting
   - Added top-down camera setup
   - Implemented friendly NPC procedural group behaviors with boids
@@ -40,9 +51,12 @@ https://docs.google.com/document/d/1HD5-_L-pCF_eC4lvgOmJ6otgNM5OX93LYyv_ONMpe5w/
 ## Milestone 2: Implementation part 2 (due 11/24)
 
 - Progress:
-  - Volumetric fog with dissipation
   - Procedural NPC enemy types, with the type affecting appearances, weapons, and behaviors
   - Randomized spawning system
+  - Volumetric fog with dissipation
+    - Top-down orthographic camera renders fog-interacting objects to a collision render texture
+    - Additive blend shader blends it with the current frame's fog RT
+    - Render texture is dampened every frame to simulate the fog filling the space back up, read by the fog raymarcher for density attenuation
   - Gameplay tweaks
 
 - Screenshots:
